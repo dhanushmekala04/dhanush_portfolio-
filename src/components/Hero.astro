@@ -20,8 +20,8 @@ import { FlipWords } from "@/components/ui/FlipWords";
     </b>
     <h1
       class="z-10 w-full max-w-xl sm:text-center text-3xl sm:text-5xl md:text-7xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground"
-      style="animation-delay: 0.3s; animation-fill-mode: forwards;"
     >
+      <span class="flip-words-fallback">AI/ML Engineer</span>
       <FlipWords words={[" AI/ML Engineer ", " Data Scientist",]} client:load />
     </h1>
     <span class="w-full max-w-xl text-muted-foreground sm:text-center text-xl sm:text-lg md:text-xl font-normal tracking-tighter text-balance"
@@ -87,6 +87,23 @@ import { FlipWords } from "@/components/ui/FlipWords";
   </div>
   </br>
 </section>
+
+<style>
+  /* FlipWords fallback handling */
+  .flip-words-fallback {
+    display: block;
+  }
+
+  /* Hide fallback when FlipWords loads */
+  astro-island:has(.flip-words-container) ~ .flip-words-fallback {
+    display: none;
+  }
+
+  /* Ensure FlipWords container is visible */
+  .flip-words-container {
+    opacity: 1 !important;
+  }
+</style>
 
 <style>
   @keyframes heroIn {
