@@ -4,35 +4,66 @@ import Hero from "@/components/Hero.astro";
 import Layout from "@/layouts/Layout.astro";
 import Stack from "@/components/Stack.astro";
 import Projects from "@/components/Projects.astro";
+import Experience from "@/components/Experience.astro";
+import Education from "@/components/Education.astro";
+import Certifications from "@/components/Certifications.astro";
 import About from "@/components/About.astro";
 import Footer from "@/components/Footer.astro";
 ---
 
-<Layout title="Free Astro Portfolio - LiteFolio">
+
+<Layout title="Dhanush">
   <main
     class="relative w-full flex flex-col justify-start items-center pattern"
   >
     <Header />
     <Hero />
     <Stack />
+    <Experience />
     <Projects />
+    <Education />
+    <Certifications />
     <About />
     <Footer />
+
+    <!-- Simple scroll animation script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Smooth scroll behavior
+        document.documentElement.style.scrollBehavior = "smooth";
+
+        // Add scroll-triggered animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -100px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-in");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all sections except hero
+        document.querySelectorAll("section:not(:first-of-type)").forEach((section) => {
+          observer.observe(section);
+        });
+
+        // Trigger hero animations immediately
+        setTimeout(() => {
+          document.querySelectorAll(".stagger-children").forEach((container) => {
+            container.classList.add("animate-on-load");
+          });
+        }, 100);
+      });
+    </script>
   </main>
 </Layout>
 
 <style>
   .pattern {
-    background-color: #ffffff;
-    background-image: radial-gradient(circle at top center, #f5fdff 70px, white),
-      repeating-radial-gradient(
-        circle at top center,
-        #ffffff,
-        #ffffff,
-        200px,
-        transparent 0,
-        #eaeaea 201px
-      );
-    background-blend-mode: multiply;
+    background-color: transparent;
   }
 </style>

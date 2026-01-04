@@ -1,0 +1,100 @@
+---
+const experiences = [
+  {
+    role: "AI & ML Engineer Intern",
+    company: "WINIT SOFTWARE",
+    duration: "On-site • Apr 2025 – Oct 2025",
+    impact: "Automated Order Processing Escalation System",
+    points: [
+      "Assisted in building end-to-end AI automation pipeline using Gmail API, Mistral OCR, and Gemini LLM to process <span class='font-semibold text-emerald-400'>500+</span> daily purchase orders from multiple document formats and email sources, achieving <span class='font-semibold text-emerald-400'>95%</span> extraction accuracy in converting unstructured data into structured formats",
+      "Supported development of stateful orchestration workflows using LangChain and LangGraph to manage extraction, validation, and escalation stages with decision-based branching, retry logic, and error handling capabilities",
+      "Helped integrate asynchronous processing with Celery and RabbitMQ for non-blocking task execution, and implemented PostgreSQL-based validation logic with <span class='font-semibold text-emerald-400'>21+</span> <span class='font-semibold text-emerald-400'>business rules</span> to detect pricing, UOM, and promotional discrepancies, contributing to <span class='font-semibold text-emerald-400'>45%</span> reduction in order errors",
+      "Contributed to building role-based intelligent escalation system with Twilio and ElevenLabs AI-powered WhatsApp, email, and voice alerts featuring interval-based retry logic, reducing manual escalation effort by <span class='font-semibold text-emerald-400'>60%</span>",
+      " <span class='font-semibold text-emerald-400'>Python, Mistral OCR, Gemini LLM, LangChain, LangGraph, ElevenLabs AI, Twilio, PostgreSQL, Celery, RabbitMQ, Gmail API, Azure</span>"
+    ],
+  },
+  {
+    role: "AI & ML Engineer Intern",
+    company: "OPTIMANAGE SOFTWARE",
+    duration: "Remote • Dec 2024 – Mar 2025",
+    impact: "Virtual AI Mental Health Platform",
+    points: [
+      "Developed FastAPI-based backend pipeline for multimodal AI psychologist with real-time speech processing, enabling multilingual mental health support with contextual memory and adaptive therapy generation",
+      "Integrated Azure Cognitive Services Speech-to-Text API achieving <span class='font-semibold text-emerald-400'>92%</span> transcription accuracy across <span class='font-semibold text-emerald-400'>5+ languages</span> for AI-driven psychological reasoning and response generation",
+      "Implemented Azure OpenAI and LangChain workflows with long-term memory using database storage to retrieve conversation history, analyze emotional patterns, and generate personalized therapy responses, improving conversation relevance by <span class='font-semibold text-emerald-400'>35%</span> and user engagement by <span class='font-semibold text-emerald-400'>50%</span>",
+      "Built phoneme-to-viseme mapping pipeline for animated avatar lip-syncing with <span class='font-semibold text-emerald-400'>98%</span> accuracy and <span class='font-semibold text-emerald-400'>sub-200ms latency</span>, delivering natural multimodal conversational experience",
+      " <span class='font-semibold text-emerald-400'>Python, FastAPI, Azure Cognitive Services, Azure OpenAI, LangChain, NLP, Speech Processing</span>"
+    ],
+  },
+];
+---
+<section id="experience" class="w-full max-w-screen-2xl px-4 py-16 flex flex-col gap-8 items-center">
+  <h2 class="w-full max-w-xl text-center text-3xl md:text-4xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground">
+    Experience
+  </h2>
+
+  <div class="w-full max-w-4xl relative">
+    {/* Timeline line */}
+    <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/30 to-transparent hidden md:block"></div>
+
+    <div class="flex flex-col gap-8 stagger-children">
+      {experiences.map((exp, idx) => (
+        <div class="relative flex items-start gap-6 group hover-lift">
+          {/* Timeline dot */}
+          <div class="relative flex-shrink-0 w-4 h-4 mt-2">
+            <div class="w-full h-full bg-primary rounded-full border-4 border-background shadow-lg group-hover:scale-110 transition-all duration-300"
+                 style={`animation-delay: ${idx * 0.2 + 0.2}s; animation-fill-mode: forwards;`}>
+            </div>
+            <div class="absolute inset-0 bg-primary/20 rounded-full animate-ping opacity-60"></div>
+          </div>
+
+          {/* Experience card */}
+          <div class="flex-1 bg-card/50 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-border/50 hover:shadow-xl hover:border-primary/20 transition-all duration-300 group-hover:-translate-y-1">
+            {/* Header section */}
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+              <div class="flex-1">
+                <h3 class="text-xl md:text-2xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground mb-1 leading-tight">
+                  {exp.role}
+                </h3>
+                <div class="flex flex-wrap items-center gap-2 text-sm text-muted-foreground font-medium tracking-tighter">
+                  <span class="px-3 py-1 bg-primary/10 bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground rounded-full font-medium tracking-tighter">
+                    {exp.company}
+                  </span>
+                  <span class="text-muted-foreground/70">•</span>
+                  <span>{exp.duration}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Impact summary */}
+            <div class="mb-6 p-4 bg-gradient-to-r from-primary/5 to-emerald-500/5 rounded-lg border-l-4 border-primary/30">
+              <p class="text-muted-foreground font-medium tracking-tighter text-pretty leading-relaxed">
+                {exp.impact}
+              </p>
+            </div>
+
+            {/* Bullet points */}
+            <div class="space-y-4">
+                {exp.points?.map((point) => (
+                <div class="flex gap-3 text-sm md:text-base leading-relaxed">
+                  <div class="flex-shrink-0 w-1.5 h-1.5 bg-primary/60 rounded-full mt-2.5"></div>
+                <div
+                  class="text-muted-foreground flex-1 font-medium tracking-tighter text-pretty"
+                  set:html={point}
+                ></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Experience section custom styles */
+  .experience-card {
+    backdrop-filter: blur(10px);
+  }
+</style> 

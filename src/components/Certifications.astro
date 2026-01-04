@@ -1,0 +1,44 @@
+---
+const certifications = [
+  {
+    title: "Data Science Certificate Course",
+    issuer: "State University of New York, USA",
+    year: "August 2024",
+    details: "Machine Learning, Data Science"
+  },
+  {
+    title: "Certificate Program on Data Science",
+    issuer: "360DigiTMG",
+    year: "February 2024",
+    credential: "Credential ID: 360DTMGIN21455",
+    details: "Data Analytics, Data Modeling, Data Mining"
+  },
+  {
+    title: "Large Language Models",
+    issuer: "Analytics Vidhya",
+    year: "",
+    details: "Comprehensive course on LLM applications and techniques"
+  },
+  {
+    title: "Generative AI with LangChain",
+    issuer: "Udemy",
+    year: "",
+    details: "Complete guide to building and deploying GenAI applications"
+  }
+];
+---
+<section id="certifications" class="w-full max-w-screen-2xl px-4 py-12 flex flex-col gap-6 items-center">
+  <h2 class="z-10 w-full max-w-xl sm:text-center text-2xl sm:text-3xl md:text-4xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground">Certifications</h2>
+  <div class="w-full max-w-2xl flex flex-col gap-6">
+    {certifications.map((cert) => (
+      <div class="bg-card rounded-lg p-6 shadow flex flex-col gap-2 border border-border transition-transform duration-300 ease-in-out hover:-translate-y-4 hover:shadow-2xl">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
+          <span class="font-semibold text-lg bg-clip-text text-transparent bg-gradient-to-br from-primary via-foreground to-foreground">{cert.title}</span>
+          <span class="text-sm text-muted-foreground">{cert.issuer} {cert.year ? `| ${cert.year}` : ''}</span>
+        </div>
+        {cert.credential && <span class="text-xs text-muted-foreground">{cert.credential}</span>}
+        {cert.details && <span class="text-xs text-muted-foreground">{cert.details}</span>}
+      </div>
+    ))}
+  </div>
+</section> 

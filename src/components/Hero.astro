@@ -1,32 +1,91 @@
+---
+import { FlipWords } from "@/components/ui/FlipWords";
+---
+
 <section
-  class="w-full flex flex-col gap-5 justify-center items-center px-4 py-32"
+  class="w-full flex flex-col gap-50 justify-center items-center px-8 py-36 relative"
 >
-  <div class="flex flex-col gap-2">
-    <h1
-      class="w-full max-w-xl sm:text-center text-3xl sm:text-5xl md:text-7xl font-medium tracking-tighter text-pretty"
+  <img
+    src="/assets/hero_background.jpg"
+    alt="Hero Background"
+    class="absolute inset-0 w-full h-full object-cover z-0 opacity-10 parallax"
+  />
+  <div class="flex flex-col gap-2 relative z-10 stagger-children">
+    <b>
+    <h2
+      class="z-10 w-full max-w-xl sm:text-center text-xl sm:text-2xl md:text-3xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground"
     >
-      Always building things for the web.
+      Hi, I'm Dhanush Vardhan
+    </h2>
+    </b>
+    <h1
+      class="z-10 w-full max-w-xl sm:text-center text-3xl sm:text-5xl md:text-7xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-b from-background via-background to-muted-foreground"
+      style="animation-delay: 0.3s; animation-fill-mode: forwards;"
+    >
+      <FlipWords words={[" AI/ML Engineer ", " Data Scientist",]} client:load />
     </h1>
-    <p
+    <span class="w-full max-w-xl text-muted-foreground sm:text-center text-xl sm:text-lg md:text-xl font-normal tracking-tighter text-balance"
+          style="animation-delay: 0.6s; animation-fill-mode: forwards;">
+      Innovating with Data and Intelligence.
+    </span>
+      <div class="flex flex-col gap-3">
+  
+    <h2
       class="w-full max-w-xl text-muted-foreground sm:text-center text-normal sm:text-lg md:text-xl font-light tracking-tighter text-balance"
     >
-      This is a simple portfolio template built with Astro and Tailwind CSS.
-    </p>
+    I specialize in transforming complex data into actionable insights and building intelligent solutions that drive real-world impact.  <b><strong>Actively seeking entry-level roles in AI/ML and Data Science.</strong></b>
+    </h2>
+  <br>
   </div>
-  <div class="w-full flex flex-wrap gap-3 items-center justify-center">
-    <a
-      href="https://x.com/gonzalochale"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="relative w-fit flex justify-center items-center px-4 py-2 sm:px-6 sm:py-3 sm:text-lg font-medium text-background bg-primary rounded-full perfect-shadow"
-    >
-      Connect with me
-      <div
-        class="z-[-1] bg-gradient-to-b from-secondary via-primary to-primary absolute w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-full border-t-2 border-secondary"
+  <div class="w-full flex flex-col gap-6 items-center justify-center">
+    <!-- Download Resume Button -->
+    <div class="flex flex-wrap gap-9 items-center justify-center">
+      <a
+        href="/assets/dhanush-resume.pdf" download
+        target="_blank"
+        rel="noopener noreferrer"
+        class="relative w-fit flex justify-center items-center px-6 py-4 sm:px-6 sm:py-3 sm:text-lg font-medium text-black bg-white rounded-full perfect-shadow transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl animate-bounce-gentle"
       >
-      </div>
-    </a>
+         @ Download Resume
+        <div
+          class="z-[-1] bg-gradient-to-b from-secondary via-white to-white absolute w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-full border-t-2 border-secondary"
+        >
+        </div>
+      </a>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="flex gap-6 items-center justify-center">
+      <a
+        href="https://www.linkedin.com/in/dhanushmekala04/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group p-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 hover:border-white/40 hover:bg-white/20 transition-all duration-300 hover:scale-110"
+        aria-label="LinkedIn Profile"
+      >
+        <img
+          src="/logos/LinkedIn.svg"
+          alt="LinkedIn"
+          class="w-6 h-6 group-hover:brightness-110 transition-all duration-300"
+        />
+      </a>
+
+      <a
+        href="https://github.com/dhanushmekala04"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group p-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 hover:border-white/40 hover:bg-white/20 transition-all duration-300 hover:scale-110"
+        aria-label="GitHub Profile"
+      >
+        <img
+          src="/logos/GitHub.svg"
+          alt="GitHub"
+          class="w-6 h-6 group-hover:brightness-110 transition-all duration-300"
+        />
+      </a>
+    </div>
   </div>
+  </br>
 </section>
 
 <style>
@@ -57,4 +116,4 @@
     opacity: 0;
     animation: heroIn 0.7s cubic-bezier(0.5, 1.15, 0.2, 1.1) 0.6s forwards;
   }
-</style>
+</style> 

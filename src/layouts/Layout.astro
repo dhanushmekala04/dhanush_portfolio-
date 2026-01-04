@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { BackgroundBeams } from "@/components/ui/background-beams.tsx";
 
 interface Props {
   title: string;
@@ -12,47 +13,47 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <SEO
-      title="Free Portfolio Template - Litefolio"
-      description="This is a starter template web protfolio. It is designed to be a starting point to showcase your work and help you stand out from the crowd. Perfect for developers, designers, and other professionals."
+      title="Dhanush Vardhan - AI/ML Engineer Portfolio"
+      description="AI/ML Engineer specializing in intelligent automation, computer vision, and data science. Experienced in Python, TensorFlow, FastAPI, and deploying production-ready ML solutions."
       openGraph={{
         basic: {
-          title: "Free Portfolio Template - Litefolio",
+          title: "Dhanush Vardhan - AI/ML Engineer Portfolio",
           type: "website",
-          image:
-            "https://raw.githubusercontent.com/gonzalochale/litefolio/v2/public/assets/preview.png",
+          image: "/assets/hero_background.jpg",
         },
       }}
       twitter={{
-        creator: "@gonzalochale",
+        creator: "@dhanushmekala",
       }}
       extend={{
-        // extending the default meta tags
         meta: [
           {
             name: "twitter:image",
-            content:
-              "https://raw.githubusercontent.com/gonzalochale/litefolio/v2/public/assets/preview.png",
+            content: "/assets/hero_background.jpg",
           },
           {
             name: "twitter:title",
-            content: "Free Portfolio Template - Litefolio",
+            content: "Dhanush Vardhan - AI/ML Engineer Portfolio",
           },
-          { name: "twitter:description", content: "Free Portfolio Template" },
+          {
+            name: "twitter:description",
+            content: "AI/ML Engineer specializing in intelligent automation and data science solutions",
+          },
           {
             name: "twitter:card",
             content: "summary_large_image",
           },
           {
             name: "twitter:site",
-            content: "@gonzalochale",
+            content: "@dhanushmekala",
           },
           {
             name: "twitter:creator",
-            content: "@gonzalochale",
+            content: "@dhanushmekala",
           },
           {
             name: "twitter:image:alt",
-            content: "Free Portfolio Template - Litefolio",
+            content: "Dhanush Vardhan - AI/ML Engineer Portfolio",
           },
         ],
       }}
@@ -60,22 +61,20 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="This is a starter template web protfolio. It is designed to be a starting point to showcase your work and help you stand out from the crowd. Perfect for developers, designers, and other professionals."
+      content="AI/ML Engineer specializing in intelligent automation, computer vision, and data science. Experienced in Python, TensorFlow, FastAPI, and deploying production-ready ML solutions."
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script
-      defer
-      data-domain="litefolio.gonzalochale.dev"
-      src="https://plausible.gonzalochale.dev/js/script.outbound-links.js"
-    ></script>
   </head>
   <body
-    class="relative flex flex-col w-full min-h-dvh justify-center items-center bg-background"
+    class="relative flex flex-col w-full min-h-dvh justify-center items-center bg-foreground"
   >
-    <slot />
+    <BackgroundBeams client:load />
+    <div class="relative z-10 w-full">
+      <slot />
+    </div>
   </body>
 </html>
 
@@ -110,7 +109,7 @@ const { title } = Astro.props;
     }
     body {
       font-family: "Geist", system-ui, sans-serif;
-      @apply bg-background text-foreground;
+      @apply bg-foreground text-foreground;
     }
   }
   .perfect-shadow {
@@ -120,5 +119,160 @@ const { title } = Astro.props;
     --perfect-shadow: 0 0 0 1px var(--base), 0 1px 1px -0.5px var(--shade),
       0 3px 3px -1.5px var(--shade), 0 6px 6px -3px var(--shade),
       0 12px 12px -6px var(--base), 0 24px 24px -12px var(--base);
+  }
+
+  /* Global animation styles */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-scale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-gentle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-bounce-gentle {
+    animation: bounce-gentle 3s ease-in-out infinite;
+  }
+
+  /* Scroll-triggered animations */
+  .animate-in {
+    animation: slide-up 0.8s cubic-bezier(0.4, 0.2, 0.2, 1) forwards;
+  }
+
+  /* Page load animations - trigger automatically */
+  .animate-on-load {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out 0.2s forwards;
+  }
+
+  /* Staggered animations for hero elements */
+  .stagger-children > *:nth-child(1) {
+    animation: slide-in-left 0.8s ease-out 0.3s forwards;
+  }
+  .stagger-children > *:nth-child(2) {
+    animation: bounce-in 0.8s ease-out 0.6s forwards;
+  }
+  .stagger-children > *:nth-child(3) {
+    animation: slide-in-right 0.8s ease-out 0.9s forwards;
+  }
+
+  /* Stagger children animations */
+  .stagger-children > * {
+    opacity: 0;
+    animation: fade-in-scale 0.6s cubic-bezier(0.4, 0.2, 0.2, 1) forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Magnetic hover effect */
+  .magnetic-hover {
+    transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+
+  /* Smooth page transitions */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Loading animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .loading-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 </style>

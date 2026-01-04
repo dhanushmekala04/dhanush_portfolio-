@@ -1,36 +1,43 @@
+---
+---
+
 <section
+  id="about"
   class="relative bg-background w-full max-w-screen-2xl text-center flex justify-center items-center px-4 py-20 sm:py-24"
 >
   <div
     class="flex flex-col md:flex-row gap-10 w-full max-w-2xl justify-center items-center"
   >
     <div
-      class="border h-[300px] w-[200px] bg-accent rotate-6 p-4 perfect-shadow"
+      class="border h-[300px] w-[200px] bg-accent rotate-6 p-4 perfect-shadow animate-slide-in-left hover:rotate-3 transition-transform duration-500 cursor-pointer"
     >
-      <div class="w-full h-[calc(100%-50px)] bg-background"></div>
+      <img
+        src="/assets/black.png"
+        alt="Your picture"
+        class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+      />
     </div>
-    <div class="flex flex-1 flex-col gap-3">
+    <div class="flex flex-1 flex-col gap-3 animate-slide-in-right">
       <h2
-        class="w-full text-left text-lg sm:text-2xl md:text-4xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-br from-primary via-foreground to-foreground"
+        class="w-full text-left text-lg sm:text-2xl md:text-4xl font-medium tracking-tighter text-pretty bg-clip-text text-transparent bg-gradient-to-br from-primary via-foreground to-foreground animate-text-reveal"
       >
         More about me
       </h2>
       <p
-        class="w-full max-w-md text-left text-sm sm:text-normal md:text-lg font-normal text-balance"
+        class="w-full max-w-md text-left text-sm sm:text-normal md:text-lg font-normal text-balance animate-text-fade-in"
       >
-        I'm a Systems Engineer from Cancún, México. I love building things for
-        the web and sharing my knowledge with others.
+        I'm a dedicated AI/ML Engineer with 8+ months of industrial experience, focused on building intelligent systems that bridge cutting-edge AI technologies with real-world business needs. I have hands-on experience developing Generative AI applications, RAG systems, and autonomous AI agents, and working end-to-end from model development to deployment. My skill set spans Python, Machine Learning, LLMs, TensorFlow, Azure AI, LangChain, and SQL. I enjoy transforming data into actionable insights and continuously learning to innovate with the latest advancements in AI.
       </p>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 animate-button-slide-up">
         <a
-          href="https://x.com/gonzalochale"
+          href="https://www.linkedin.com/in/dhanushmekala04"
           target="_blank"
           rel="noopener noreferrer"
-          class="relative w-fit flex justify-center items-center px-4 py-2 sm:px-6 sm:py-3 sm:text-lg font-medium text-background bg-primary rounded-full perfect-shadow"
+          class="relative w-fit flex justify-center items-center px-4 py-2 sm:px-6 sm:py-3 sm:text-lg font-medium text-background bg-primary rounded-full perfect-shadow hover:scale-105 hover:shadow-xl transition-all duration-300 group"
         >
           Connect with me
           <div
-            class="z-[-1] bg-gradient-to-b from-secondary via-primary to-primary absolute w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-full border-t-2 border-secondary"
+            class="z-[-1] bg-gradient-to-b from-secondary via-primary to-primary absolute w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-full border-t-2 border-secondary group-hover:border-primary transition-colors duration-300"
           >
           </div>
         </a>
@@ -38,3 +45,115 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* About section animations */
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-text-reveal {
+    animation: text-reveal 0.6s ease-out 0.6s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .animate-text-fade-in {
+    animation: text-fade-in 0.8s ease-out 0.8s forwards;
+    opacity: 0;
+  }
+
+  .animate-button-slide-up {
+    animation: button-slide-up 0.6s ease-out 1s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes text-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes text-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes button-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced hover effects */
+  @media (prefers-reduced-motion: no-preference) {
+    .border:hover {
+      animation: gentle-rotate 6s linear infinite;
+    }
+  }
+
+  @keyframes gentle-rotate {
+    from {
+      transform: rotate(6deg);
+    }
+    to {
+      transform: rotate(6deg) rotateY(360deg);
+    }
+  }
+</style>
