@@ -41,15 +41,11 @@ export const FlipWords = ({
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (!prefersReducedMotion) {
-        console.log('FlipWords: Starting timer for', currentWord, 'isMobile:', isMobile);
         const timer = setTimeout(() => {
-          console.log('FlipWords: Timer fired, changing word');
           startAnimation();
         }, duration);
 
         return () => clearTimeout(timer);
-      } else {
-        console.log('FlipWords: Reduced motion detected, skipping animation');
       }
     }
   }, [isAnimating, duration, startAnimation, currentWord, isMobile]);
