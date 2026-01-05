@@ -14,6 +14,19 @@ export const FlipWords = ({
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Detect mobile on mount and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile(); // Check on mount
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // thanks for the fix Julian - https://github.com/Julian-AT
   const startAnimation = useCallback(() => {
@@ -28,17 +41,18 @@ export const FlipWords = ({
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (!prefersReducedMotion) {
+        console.log('FlipWords: Starting timer for', currentWord, 'isMobile:', isMobile);
         const timer = setTimeout(() => {
+          console.log('FlipWords: Timer fired, changing word');
           startAnimation();
         }, duration);
 
         return () => clearTimeout(timer);
+      } else {
+        console.log('FlipWords: Reduced motion detected, skipping animation');
       }
     }
-  }, [isAnimating, duration, startAnimation]);
-
-  // Detect mobile devices for simplified animations
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  }, [isAnimating, duration, startAnimation, currentWord, isMobile]);
 
   return (
     <AnimatePresence
@@ -75,11 +89,12 @@ export const FlipWords = ({
         key={currentWord}
       >
         {isMobile ? (
-          // Simplified animation for mobile
+          // Simple fade animation for mobile using CSS transitions
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            key={currentWord}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
             className="inline-block"
           >
             {currentWord}
