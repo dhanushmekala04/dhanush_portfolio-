@@ -65,6 +65,7 @@ export const BackgroundBeams = React.memo(
       "M12 -637C12 -637 80 -232 544 -105C1008 22 1076 427 1076 427",
       "M19 -645C19 -645 87 -240 551 -113C1015 14 1083 419 1083 419",
     ];
+
     return (
       <div
         className={cn(
